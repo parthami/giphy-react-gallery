@@ -6,15 +6,10 @@ export default class GalleryThumb extends Component {
     e.stopPropagation();
     this.props.onClick();
   };
-  constructor() {
-    super();
-  }
   clickToChangeImage(e) {
     e.persist();
     const url = e.target.src;
     const imageNumber = parseInt(e.target.dataset.imageId, 10);
-
-    console.log(`Changing to ${url} and ${imageNumber}`);
     this.props.setActiveImage(url, imageNumber);
   }
 

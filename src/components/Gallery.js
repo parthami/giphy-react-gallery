@@ -42,7 +42,6 @@ export default class Gallery extends Component {
   }
 
   setActiveImage(activeImageSrc, imageNumber) {
-    console.log(`Recieved ${activeImageSrc} and ${imageNumber}`);
     this.setState({ activeImageSrc });
     this.setState({ imageNumber });
   }
@@ -56,23 +55,17 @@ export default class Gallery extends Component {
     var lastImageNumber = document.getElementById("images").childNodes[
       totalImages - 1
     ].childNodes[0].dataset.imageId;
-    console.log(totalImages + firstImageNumber + lastImageNumber);
 
     var newImageNumber = 0;
     var newImageURL = "";
     var check = currentImageNumber === lastImageNumber;
-    // console.log(check);
-    console.log(
-      `totalImages: ${totalImages}, firstImageNumber: ${firstImageNumber}, lastImageNumber: ${lastImageNumber}, currentIMageNUmber: ${currentImageNumber}, chech: ${check}`
-    );
-
+  
     if (check) {
       newImageURL = document.getElementById("images").childNodes[0]
         .childNodes[0].src;
       newImageNumber = document.getElementById("images").childNodes[0]
         .childNodes[0].dataset.imageId;
     } else {
-      // var nextImageElement = document.getElementsByClassName(currentImageNumber)[1].parentElement.parentElement.nextElementSibling.childNodes[0].childNodes[0];
       var nextImageElement = document.querySelectorAll(
         `[data-image-id='${currentImageNumber}']`
       )[0].parentElement.nextElementSibling.childNodes[0];
